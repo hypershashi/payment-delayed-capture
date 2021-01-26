@@ -1,0 +1,19 @@
+micronaut:
+  server:
+    port: 8089
+
+messaging:
+  iopg-messages-subscription: delayed-capture-subscription-skur
+
+gcp:
+  project-id: ikea-iopg-payment
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/delayedcapture
+    driverClassName: org.postgresql.Driver
+    username: delayedcaptureuser
+    password: abcd1234
+    dialect: POSTGRES
+jpa.default.properties.hibernate.hbm2ddl.auto: none
+flyway.datasources.default.enabled: true

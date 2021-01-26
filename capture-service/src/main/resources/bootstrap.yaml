@@ -1,0 +1,30 @@
+micronaut:
+  server:
+    port: 8080
+  application:
+    name: delayed-capture-service
+    instance:
+      id: delayed-capture-service-${random.shortuuid}
+  config-client:
+    enabled: true
+  executors:
+    pubsub-messaging-subscriber:
+      type: scheduled
+      corePoolSize: 16
+    pubsub-messaging-publisher:
+      type: scheduled
+      corePoolSize: 16
+  metrics:
+    enabled: false
+    export:
+      signalfx:
+        enabled: false
+        accessToken: umOh01VbrUqqh0WWgGJ5Mw
+        step: PT1M
+        apiHost: https://api.eu0.signalfx.com
+
+gcp:
+  pubsub:
+    subscribing-executor: pubsub-messaging-subscriber
+    publishing-executor: pubsub-messaging-publisher
+    parallel-pull-count: 8
